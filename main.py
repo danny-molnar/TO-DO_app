@@ -5,27 +5,50 @@ import json
 app = Flask(__name__)
 
 # the database will be a JSON, like below
-movie_db = {
-    "1" : {"name" : "Stargate", "release_date" : "1994"},
-    "2" : {"name" : "Sunshine", "release_date" : "2007"}
+# setting up a dummy JSON with some basic data in it
+
+# task:
+## short_desc
+## long_desc
+## date_created
+## date_due
+## done
+
+
+tasks_db = {
+    "1" : {
+        "short_desc" : "Make Coffee", 
+        "long_desc" : "Make Coffee, use new beans",
+        "date_created" : "12. 11. 2021.",
+        "date_due" : "13. 11. 2021.",
+        "done" : "No" 
+    },
+    "2" : {
+        "short_desc" : "Tidy up", 
+        "long_desc" : "Tidy up the living room, do some cleaning",
+        "date_created" : "12. 11. 2021.",
+        "date_due" : "14. 11. 2021.",
+        "done" : "No" 
+    }
 }
 
 @app.route("/")
 def hello():
-    return "Hello world!<br><a href=/movies> Click here for the movie database! </a>"
+    return "Hello world!<br><a href=/tasks> Click here for the TODO list! </a>"
 
-@app.route("/movies")
-def movies():
+@app.route("/tasks")
+def tasks():
     html_response = "<ul>"
-    for m in movie_db:
-        html_response += "<li>" + movie_db[m]["name"] + "</li>"
+    for t in tasks_db:
+        html_response += "<li>" + tasks_db[t]["short_desc"] + "</li>"
     html_response += "</ul>"
     return html_response
 
 # READ, and search for movie data by id
-@app.route("/movie/<movie_id>")
-def get_movie(movie_id):
-    return json.dumps(movie_db[movie_id])
+@app.route("/tasks/<task_id>")
+def get_task(task_id):
+    return json.dumps(tasks_db[task_id])
+    #perhaps add a html_response string and concat the deets to that string and return 
 
 
 # route for Creating a new item with POST, notice the methods argument which is a list of methods
