@@ -24,11 +24,25 @@ def get_movie(movie_id):
     return json.dumps(movie_db[movie_id])
 
 
+# route for Creating a new item with POST, notice the methods argument which is a list of methods
+@app.route("/movie/add", methods=['POST'])
+def add_movie():
+    req_data = request.get_json() 
+    movie = req_data['movie']
+    
+    new_movie = {"4" : movie}
+    movie_db.update(new_movie)
+    
+    return "Movie added"
+
+
+##new movie to be added
+# { "movie" : {"name" : "The Matrix", "release_date" : "1999" } }
+
+
 if __name__ == "__main__":
     app.run(host="127.0.0.1")
     
-
-
 # CRUD: Create, Read, Update, Delete api calls as HTTP requests
 # CREATE - POST
 # READ   - GET
@@ -41,7 +55,7 @@ if __name__ == "__main__":
 # - add tasks
 # - tick tasks, but still visible
 # - delete tasks
-
+ 
 # UI:
 # - empty list on launch or load saved list, maybe in a JSON 
 # - 
