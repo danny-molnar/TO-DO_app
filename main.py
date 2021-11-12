@@ -16,7 +16,11 @@ def hello():
 
 @app.route("/movies")
 def movies():
-    return json.dumps(movie_db)
+    html_response = "<ul>"
+    for m in movie_db:
+        html_response += "<li>" + movie_db[m]["name"] + "</li>"
+    html_response += "</ul>"
+    return html_response
 
 # READ, and search for movie data by id
 @app.route("/movie/<movie_id>")
@@ -38,7 +42,6 @@ def add_movie():
 
 ##new movie to be added
 # { "movie" : { "name" : "The Matrix", "release_date" : "1999" } }
-
 
 if __name__ == "__main__":
     app.run(host="127.0.0.1")
