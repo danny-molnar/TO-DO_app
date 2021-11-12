@@ -12,7 +12,7 @@ movie_db = {
 
 @app.route("/")
 def hello():
-    return "Hello world!<a href=/movies> Click here for the movie database! </a>"
+    return "Hello world!<br><a href=/movies> Click here for the movie database! </a>"
 
 @app.route("/movies")
 def movies():
