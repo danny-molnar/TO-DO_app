@@ -37,7 +37,7 @@ def add_movie():
 
 
 ##new movie to be added
-# { "movie" : {"name" : "The Matrix", "release_date" : "1999" } }
+# { "movie" : { "name" : "The Matrix", "release_date" : "1999" } }
 
 
 if __name__ == "__main__":
@@ -59,7 +59,3 @@ if __name__ == "__main__":
 # UI:
 # - empty list on launch or load saved list, maybe in a JSON 
 # - 
-
-
-
-
