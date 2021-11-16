@@ -1,5 +1,5 @@
 # Creating first REST API with Flask
-from flask import Flask, request, Response
+from flask import Flask, request, Response, render_template
 import json
 from datetime import date
 import calendar
@@ -38,9 +38,17 @@ tasks_db = {
 
 @app.route("/")
 def hello():
-    html_response = "Good morning! Welcome to your TODO list!<br>"
-    html_response += "Today is " + str(today) + ", " + str(today_name) + "."
-    return html_response 
+    #html_response = "Good morning! Welcome to your TODO list!<br>"
+    #html_response += "Today is " + str(today) + ", " + str(today_name) + "."
+    return render_template("home.html")
+    #return html_response 
+
+@app.route("/about")
+def about():
+    #html_response = "Good morning! Welcome to your TODO list!<br>"
+    #html_response += "Today is " + str(today) + ", " + str(today_name) + "."
+    return render_template("about.html")
+    #return html_response 
 
 @app.route("/tasks")
 def tasks():
