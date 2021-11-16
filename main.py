@@ -37,7 +37,7 @@ tasks_db = {
 }
 
 @app.route("/")
-def hello():
+def home():
     #html_response = "Good morning! Welcome to your TODO list!<br>"
     #html_response += "Today is " + str(today) + ", " + str(today_name) + "."
     return render_template("home.html")
@@ -50,16 +50,18 @@ def about():
     return render_template("about.html")
     #return html_response 
 
+
+# This route below will list all tasks currently in the TODO list for the day that is today.
 @app.route("/tasks")
 def tasks():
-    """ html_response = "<ul>"
+    html_response = "<ul>"
     for t in tasks_db:
         html_response += "<li>" + tasks_db[t]["short_desc"] + "</li>"
     html_response += "</ul>"
-    return html_response """
+    return html_response 
     
     # Here we need to link the tasks to the output html
-    
+    # What if we open the corresponding HTML file in write mode and append whatever we want there?
     
 
 # READ, and search for movie data by id
