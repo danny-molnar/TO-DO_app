@@ -52,11 +52,15 @@ def about():
 
 @app.route("/tasks")
 def tasks():
-    html_response = "<ul>"
+    """ html_response = "<ul>"
     for t in tasks_db:
         html_response += "<li>" + tasks_db[t]["short_desc"] + "</li>"
     html_response += "</ul>"
-    return html_response
+    return html_response """
+    
+    # Here we need to link the tasks to the output html
+    
+    
 
 # READ, and search for movie data by id
 @app.route("/tasks/<task_id>")
