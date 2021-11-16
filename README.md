@@ -1,7 +1,7 @@
-# my_python_app
-This is a repo for a new Python application 
+# TO-DO app
 
 A basic Flask API app, modeling a TODO application.
+As part of Cloudreach AWS TA, this app is a work-in-progress and will be getting continuous updates as the program goes on.
 
 ## 16.11.2021.
 Adding this feature tracker to README.md
