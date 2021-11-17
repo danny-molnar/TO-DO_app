@@ -94,14 +94,3 @@ if __name__ == "__main__":
 # READ   - GET
 # UPDATE - PUT
 # DELETE - GET
-
-# my app: To-do list. Team: Tyrone, Esther, Gareth, Chris, Danny
- 
-# Functionalities of the app:
-# - add tasks
-# - tick tasks, but still visible
-# - delete tasks
- 
-# UI:
-# - empty list on launch or load saved list, maybe in a JSON 
-# - 
