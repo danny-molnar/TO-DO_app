@@ -1,8 +1,19 @@
 from flask import Flask, render_template, request, redirect, url_for
-
+from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
+from config import config
 
-app = Flask(__name__)
+app = Flask(__name__, instance_relative_config=False)
+#app.config.from_object(Config)
+#db = SQLAlchemy(app)
+# for the above, a matching db needs to be added to the MySQL db through docker
+# check out the documentation in github Pascal will add soon
+# binding the db as below
+#class Movies(db.Model):
+#    id = db.Column('id', db.Integer, primary_key=True)
+#    name = db.Column(db.VARCHAR(length=255))
+#    release_year = db.Column(db.Integer)
+
 
 # /// = relative path, //// = absolute path
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
@@ -20,8 +31,6 @@ class Todo(db.Model):
 def home():
     todo_list = Todo.query.all()
     return render_template("base.html", todo_list=todo_list)
-
-from flask import Flask, render_template, request, redirect, url_for
 
 @app.route("/add", methods=["POST"])
 def add():
