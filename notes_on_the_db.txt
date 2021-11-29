@@ -1,0 +1,16 @@
+Okay, so let the database's name be: tasks_db
+
+The table that contains all the tasks will be: Tasks, but we need another one called Todo
+
+If we run DESCRIBE Tasks, it should look like this:
+
++----------+--------------+------+-----+---------+----------------+
+| Field    | Type         | Null | Key | Default | Extra          |
++----------+--------------+------+-----+---------+----------------+
+| id       | int          | NO   | PRI | NULL    | auto_increment |
+| title    | varchar(100) | YES  |     | NULL    |                |
+| complete | tinyint(1)   | YES  |     | NULL    |                |
++----------+--------------+------+-----+---------+----------------+
+
+I had to export the MySQL root pw to an os variable.
+

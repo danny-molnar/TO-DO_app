@@ -1,18 +1,17 @@
-from flask import Flask, render_template, request, redirect, url_for
-
+from flask import Flask, request, Response, render_template, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
+from config import Config
+import json
 
-app = Flask(__name__)
 
-# /// = relative path, //// = absolute path
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app = Flask(__name__, instance_relative_config=False)
+app.config.from_object(Config)
 db = SQLAlchemy(app)
 
 
 class Todo(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(100))
+    id = db.Column('id', db.Integer, primary_key=True)
+    title = db.Column(db.VARCHAR(length=100))
     complete = db.Column(db.Boolean)
 
 
@@ -21,7 +20,6 @@ def home():
     todo_list = Todo.query.all()
     return render_template("base.html", todo_list=todo_list)
 
-from flask import Flask, render_template, request, redirect, url_for
 
 @app.route("/add", methods=["POST"])
 def add():
@@ -46,5 +44,5 @@ def delete(todo_id):
     return redirect(url_for("home"))
 
 if __name__ == "__main__":
-    db.create_all()
+    #db.create_all()
     app.run(debug=True)
